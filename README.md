@@ -19,6 +19,26 @@ const blurHash: string = encode(rgbaData, width, height, componentX, componentY)
 const blurRgbaData: Uint8ClampedArray = decode(blurHash, width, height)
 ```
 
+## Command-line Tool
+
+This module includea a command-line tool for encoding and decoding BlurHashes.
+It can even display a BlurHash image in the terminal using ANSI True Color
+escape codes, if your terminal supports it.
+
+You can run it directly from a URL, which will print a usage message:
+
+```
+deno run https://deno.land/x/blurhash/blurhash.ts
+```
+
+Some usage examples:
+
+```
+deno run https://deno.land/x/blurhash/blurhash.ts encode -x 7 -y 7 < foo.jpg
+deno run --allow-write=blur.jpg https://deno.land/x/blurhash/blurhash.ts decode 'LEHLk~WB2yk8pyo0adR*.7kCMdnj' blur.jpg -w 128 -h 64
+deno run https://deno.land/x/blurhash/blurhash.ts display 'LEHLk~WB2yk8pyo0adR*.7kCMdnj' -w 80 -h 20
+```
+
 ## License
 
 This is mostly repackaged code from BlurHash and `fast-blurhash`, both of which
